@@ -120,3 +120,4 @@ class EventManager {
     }
 
     const Manager = new EventManager()
+    Manager.inicializarCalendario();
