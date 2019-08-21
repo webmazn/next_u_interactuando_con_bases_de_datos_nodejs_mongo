@@ -1,10 +1,14 @@
 const { Router } = require('express'),
-    router = Router();
+  router = Router(),
+  UsersController = require('../controllers/usuarios-controller'),
+  EventsController = require('../controllers/eventos-controller');
+
 
 router
-.get('/ruta', (req, res) => {
-  res.send('Hola NODE');
-})     //LoginController.getLogin
+  .get('/defaultUser', UsersController.defaultUser)
+  .post('/login', UsersController.login)
 //.get('/close', HomeController.setClose)
+
+
 
 module.exports=router

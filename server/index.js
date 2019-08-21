@@ -4,6 +4,8 @@ const express = require('express'),
       mongoose = require('mongoose'),
       routes = require('./routes');
 
+mongoose.connect('mongodb://localhost/nextu_final_db')
+
 app.use(express.static('client'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true}))
