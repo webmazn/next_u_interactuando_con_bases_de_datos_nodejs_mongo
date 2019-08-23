@@ -44,14 +44,14 @@ EventsController.getAll = (req, res, next) => {
 }
 
 EventsController.newEvent = (req, res, next) => {
-  console.log('Grabaremos un nuevo evento')
+  console.log('Grabaremos un nuevo evento: '+req.body.end)
   let userId = req.session.userID,
     titulo = req.body.title,
     fec_inicio = req.body.start,
-    fec_fin = req.body.end,
+    fec_fin = req.body.end == '' ? '1999-12-01': req.body.end,
     hor_inicio = req.body.start_hour,//fec_inicio.length > 0 ? fec_inicio.substring(11,6) : '',
     hor_fin = fec_fin != '' ? req.body.end_hour : '',
-    dia_completo = fec_fin != '' ? '0' : '1';
+    dia_completo = req.body.end == '' ? '1' : '0';
 
   let event = new EventModel({
     eventoId : Math.floor(Math.random() * 50),
@@ -63,7 +63,7 @@ EventsController.newEvent = (req, res, next) => {
     hor_fin : hor_fin,
     dia_completo : dia_completo
   })
-  //console.log(event)
+  console.log(event)
   event.save(function (error) {
     if (error) {
       res.status(500)
@@ -71,6 +71,19 @@ EventsController.newEvent = (req, res, next) => {
     }
     res.send("Evento guardado")
   })
+}
+
+EventsController.deleteEvent = (req, res, next) => {
+/*
+    let uid = req.params.id
+    Users.remove({userId: uid}, function(error) {
+        if(error) {
+            res.status(500)
+            res.json(error)
+        }
+        res.send("Registro eliminado")
+    })
+*/
 }
 
 module.exports = EventsController
