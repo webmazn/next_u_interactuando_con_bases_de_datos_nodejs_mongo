@@ -5,11 +5,13 @@ const express = require('express'),
       routes = require('./routes');
 
 mongoose.connect('mongodb://localhost/nextu_final_db')
+  .then(db => console.log('DB is connected'))
+  .catch(err => console.error(err))
 
 app.use(express.static('client'))
-app.use(express.json())
-app.use(express.urlencoded({ extended: true}))
-app.use(routes)
+  .use(express.json())
+  .use(express.urlencoded({ extended: true}))
+  .use(routes)
 
 app.listen(port, function() {
   console.log('Server is listeng on port: ' + port)

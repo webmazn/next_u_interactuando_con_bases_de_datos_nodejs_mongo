@@ -3,7 +3,7 @@ const UsersModel = require('../models/usuarios-models'),
 
 UserController.defaultUser = (req, res, next) => {
   let user = new UsersModel({
-    userId: Math.floor(Math.random() * 50),
+    userId: 7,//Math.floor(Math.random() * 50),
     email: 'maycol_630@hotmail.com',
     clave: 'clave01',
     nombre: 'Maycol Zambrano Nuñez',
