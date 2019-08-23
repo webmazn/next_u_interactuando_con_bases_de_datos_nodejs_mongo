@@ -22,7 +22,7 @@ EventsController.defaultEvent = (req, res, next) => {
 }
 
 EventsController.getAll = (req, res, next) => {
-  console.log('Traeremos todo')
+  console.log('Traeremos todos los eventos')
   EventModel.find().exec(function(err, doc){
       if (err) {
           res.status(500)
@@ -40,6 +40,36 @@ EventsController.getAll = (req, res, next) => {
       })
       console.log(data)
       res.json(data)
+  })
+}
+
+EventsController.newEvent = (req, res, next) => {
+  console.log('Grabaremos un nuevo evento')
+  let userId = req.session.userID,
+    titulo = req.body.title,
+    fec_inicio = req.body.start,
+    fec_fin = req.body.end,
+    hor_inicio = req.body.start_hour,//fec_inicio.length > 0 ? fec_inicio.substring(11,6) : '',
+    hor_fin = fec_fin != '' ? req.body.end_hour : '',
+    dia_completo = fec_fin != '' ? '0' : '1';
+
+  let event = new EventModel({
+    eventoId : Math.floor(Math.random() * 50),
+    userId : userId,
+    titulo : titulo,
+    fec_inicio : fec_inicio,
+    hor_inicio : hor_inicio,
+    fec_fin : fec_fin,
+    hor_fin : hor_fin,
+    dia_completo : dia_completo
+  })
+  //console.log(event)
+  event.save(function (error) {
+    if (error) {
+      res.status(500)
+      res.json(error)
+    }
+    res.send("Evento guardado")
   })
 }
 

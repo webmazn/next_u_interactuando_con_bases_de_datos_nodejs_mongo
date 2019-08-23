@@ -2,7 +2,7 @@
 class EventManager {
     constructor() {
         this.urlBase = "/events"
-        this.obtenerDataInicial()
+        //this.obtenerDataInicial()
         this.inicializarFormulario()
         this.guardarEvento()
     }
@@ -35,15 +35,17 @@ class EventManager {
                 end = $('#end_date').val()
                 start_hour = $('#start_hour').val()
                 end_hour = $('#end_hour').val()
-                start = start + 'T' + start_hour
-                end = end + 'T' + end_hour
+                start = start // + 'T' + start_hour
+                end = end // + 'T' + end_hour
             }
             let url = this.urlBase + "/new"
             if (title != "" && start != "") {
                 let ev = {
                     title: title,
                     start: start,
-                    end: end
+                    end: end,
+                    start_hour: start_hour,
+                    end_hour: end_hour
                 }
                 $.post(url, ev, (response) => {
                     alert(response)

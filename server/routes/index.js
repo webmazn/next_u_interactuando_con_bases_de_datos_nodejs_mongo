@@ -8,5 +8,6 @@ router
   .post('/login', UsersController.login)
   .get('/events/defaultEvent', EventsController.defaultEvent)
   .get('/events/all', EventsController.getAll)
+  .post('/events/new', EventsController.newEvent)
 
 module.exports=router

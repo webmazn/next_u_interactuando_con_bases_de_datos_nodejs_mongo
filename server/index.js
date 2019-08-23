@@ -1,4 +1,5 @@
 const express = require('express'),
+      session = require('express-session'),
       app = express(),
       port = (process.env.PORT || 3000),
       mongoose = require('mongoose'),
@@ -11,6 +12,11 @@ mongoose.connect('mongodb://localhost/nextu_final_db')
 app.use(express.static('client'))
   .use(express.json())
   .use(express.urlencoded({ extended: true}))
+  .use(session({
+    secret: 'secret@NU2019',
+    saveUninitialized: true,
+    resave: true
+  }))
   .use(routes)
 
 app.listen(port, function() {

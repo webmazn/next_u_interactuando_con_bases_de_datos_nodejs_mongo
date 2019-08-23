@@ -1,4 +1,5 @@
 const UsersModel = require('../models/usuarios-models'),
+  session = require('express-session'),
   UserController = () => {}
 
 UserController.defaultUser = (req, res, next) => {
@@ -32,6 +33,7 @@ UserController.login = (req, res, next) => {
     } else {
       console.log(doc)
       if(doc != null && pass == doc.clave){
+        req.session.userID = doc.userId
         res.json('Validado')
       }else{
         res.json(err)
