@@ -1,0 +1,1 @@
+{"_id":{"$oid":"5d5dbd7200dd180c3c15efbb"},"userId":{"$numberInt":"1"},"email":"maycol_630@hotmail.com","clave":"clave01","nombre":"Maycol Zambrano Nuñez","fec_nacimiento":{"$date":{"$numberLong":"505440000000"}},"__v":{"$numberInt":"0"}}

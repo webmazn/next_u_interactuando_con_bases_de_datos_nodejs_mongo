@@ -4,6 +4,7 @@ class EventManager {
     //this.obtenerDataInicial()
     this.inicializarFormulario()
     this.guardarEvento()
+    this.cerrarSesion()
   }
 
   obtenerDataInicial() {
@@ -15,10 +16,21 @@ class EventManager {
 
   eliminarEvento(evento) {
     let eventId = evento.id
-    $.post('/events/delete/' + eventId, {
+    $.post(this.urlBase + '/delete/' + eventId, {
       id: eventId
     }, (response) => {
       alert(response)
+    })
+  }
+
+  cerrarSesion() {
+    $('#logout').on('click', (ev) => {
+      ev.preventDefault()
+      $.post('/logout/', (response) => {
+        if (response == "cerrar") {
+          window.location.href = "http://localhost:3000/"
+        }
+      })
     })
   }
 

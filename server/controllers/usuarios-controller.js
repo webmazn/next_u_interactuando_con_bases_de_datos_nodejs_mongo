@@ -42,4 +42,10 @@ UserController.login = (req, res, next) => {
   })
 }
 
+UserController.logout = (req, res, next) => {
+  req.session.userID = null
+  req.session.destroy()
+  res.send('cerrar')
+}
+
 module.exports = UserController

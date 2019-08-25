@@ -11,5 +11,6 @@ router
   .post('/events/new', EventsController.newEvent)
   .post('/events/delete/:id', EventsController.deleteEvent)
   .post('/events/update/:id', EventsController.updateEvent)
+  .post('/logout', UsersController.logout)
 
 module.exports=router
