@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "supervisor node app.js"
+    "start": "supervisor node server/index.js"
   },
   "repository": {
     "type": "git",
