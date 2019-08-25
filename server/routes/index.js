@@ -10,5 +10,6 @@ router
   .get('/events/all', EventsController.getAll)
   .post('/events/new', EventsController.newEvent)
   .post('/events/delete/:id', EventsController.deleteEvent)
+  .post('/events/update/:id', EventsController.updateEvent)
 
 module.exports=router
