@@ -20,7 +20,7 @@
   "homepage": "https://github.com/webmazn/next_u_interactuando_con_bases_de_datos_nodejs_mongo#readme",
   "dependencies": {
     "cookie-parser": "^1.4.4",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-session": "^1.16.2",
     "mongoose": "^5.6.9"
   },
